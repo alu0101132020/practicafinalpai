@@ -22,12 +22,14 @@
 'use strict';
 
 let BallTest = null;
+let BouncingScreenTest = null;
 let expectTest2 = null;
 
 if (typeof(window) === 'undefined') {
-  BallTest = require('../src/ball');
   const chai = require('chai');
   expectTest2 = chai.expect;
+  BallTest = require('../src/ball');
+  let BouncingScreenTest = null;
 } else {
   BallTest = Ball;
   expectTest2 = expect;
@@ -47,6 +49,14 @@ describe ('Ball', () => {
     });
     it ('should return black as color of our ball', () => {
       expectTest2(testBall.color).to.equal('black');
+    });
+  });
+  describe('update position', () => {
+    it ('should previous val of x should be different than new one.', () => {
+      let testBall = new BallTest
+      const previousXPos = testBall.position.x;
+      testBall.updatePosition();
+      expectTest2(previousXPos).to.not.equal(testBall.position.x);
     });
   });
 });

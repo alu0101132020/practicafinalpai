@@ -36,10 +36,21 @@ const BLACK_COLOR_BALL_SCREEN = 'black';
  * rebotando en los bordes.
  */
 class BouncingScreen {
+  /**
+   * @description Constructor principal, que a partir de un canvas instancia
+   * las dimensiones de la pantalla e incializa una pelota en el centro de la
+   * pantalla.
+   * @param {canvas} canvas Canvas sobre el que se dibujará la pelota y que hará
+   * de pantalla sobre la que se rebota
+   */
   constructor(canvas) {
     this.maxX = canvas.width;
     this.maxY = canvas.length;
     this.ball = new BallClass(canvas.width / 2, canvas.length / 2, BALL_RADIUS,
       BLACK_COLOR_BALL_SCREEN);
   }
+}
+
+if (typeof(window) === 'undefined') {
+  module.exports = BouncingScreen;
 }
