@@ -254,8 +254,8 @@ const CANVAS = document.getElementById('quick-hull');
  * @description - Función principal del programa.
  */
 const draw = () => {
-  CANVAS.width = window.innerWidth;
-  CANVAS.height = window.innerHeight;
+  CANVAS.width = 1400;
+  CANVAS.height = 800;
   if (CANVAS.getContext) {
     const numberOfPoints = prompt('Enter the number of points that the converx hull will be made of:', '0');
     if (numberOfPoints > 0) {

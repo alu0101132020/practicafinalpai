@@ -156,8 +156,8 @@ const showError = (ctx) => {
  */
 const mandlebrot = () => {
   const canvas = document.getElementById('mandlebrot');
-  canvas.width = WIDTH_OF_CANVAS;
-  canvas.height = HEIGHT_OF_CANVAS;
+  canvas.width = 1400;
+  canvas.height = 800;
   if (canvas.getContext) {
     const ctx = canvas.getContext('2d');
     drawMandlebrotSet(ctx, canvas);

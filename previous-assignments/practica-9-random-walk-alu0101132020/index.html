@@ -1,24 +1,77 @@
+<!--  
+   Universidad de La Laguna
+	 Escuela Superior de Ingeniería y Tecnología
+	 Computer Ingenieering Degree
+	 Interactive Application Programming
+
+   @author      Manuel Andrés Carrera Galafate
+   @since 16.May.2020
+-->
+
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-      <meta charset="UTF-8">
-      <title>Carrera Galafate Manuel Andrés</title>
 
-      <script src="src/docs/scripts/prettify/prettify.js"> </script>
-      <script src="src/docs/scripts/prettify/lang-css.js"> </script>
-      <link type="text/css" rel="stylesheet" href="src/docs/styles/prettify-tomorrow.css">
-      <link type="text/css" rel="stylesheet" href="src/docs/styles/jsdoc-default.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrera Galafate Manuel Andrés</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script language="javascript" type="text/javascript" src="mandlebrot.js" defer></script>
+  <script language="javascript" type="text/javascript" src="complex-number.js"defer></script>
+</head>
 
-  <body>
-    <h1>Práctica 9. Random Walk. Programación Gráfica y Orientada a Objetos en JS - Manuel Andrés Carrera Galafate</h1>
-    <h2><a href="src/manuel-andres-carrera-galafate-random-walk.html">Random walk</a></h2>
-    <h2><a href="src/docs/index.html">Random walk - Documentación</a></h2>
-    <h2><a href="src/manuel-andres-carrera-galafate-tests.html">Random walk - Tests</a></h2>
-    <h2><a href="coverage/index.html">Random walk - Cubrimiento</a></h2>
-    <h2><a href="src/manuel-andres-carrera-galafate-UML.html">Random walk - UML</a></h2>
-    <h2><a href="src/manuel-andres-carrera-galafate-smiley-p09.html">Smiley</a></h2>
-    <h2><a href="src/manuel-andres-carrera-galafate-smiley-p09-test.html">Smiley Tests</a></h2>
-    <h2><a href="src/manuel-andres-carrera-galafate-smiley-p09-doc.html">Smiley Tests</a></h2>
-  </body>
+<body onload="mandlebrot();">
+  <section class="hero is-dark">
+      <nav class="navbar  has-shadow" role="navigation" aria-label="main navigation">
+        <div class="container">
+          <div class="navbar-brand">
+            <div class="navbar-burger burger"  data-target="navbar-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+  
+          <div class="navbar-menu" id="navbar-menu">
+            <div class="navbar-start">
+              <span class="title">Random walk</span>
+            </div>
+      
+            <!-- navbar items | right side -->
+            <div class="navbar-end">
+              <a class="navbar-item" href="../../index.html">
+                  Volver a índice
+                </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+  <section class="hero is-fullheight is-primary">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h2 class="title">Práctica 9. Random Walk. Programación Gráfica y Orientada a Objetos en JS</h2>
+        <h2><a href="src/manuel-andres-carrera-galafate-random-walk.html">Random walk</a></h2>
+        <h2><a href="src/docs/index.html">Random walk - Documentación</a></h2>
+        <h2><a href="src/manuel-andres-carrera-galafate-tests.html">Random walk - Tests</a></h2>
+        <h2><a href="coverage/index.html">Random walk - Cubrimiento</a></h2>
+        <h2><a href="src/manuel-andres-carrera-galafate-UML.html">Random walk - UML</a></h2>
+        <h2><a href="src/manuel-andres-carrera-galafate-smiley-p09.html">Smiley</a></h2>
+        <h2><a href="src/manuel-andres-carrera-galafate-smiley-p09-test.html">Smiley Tests</a></h2>
+        <h2><a href="src/manuel-andres-carrera-galafate-smiley-p09-doc.html">Smiley Tests</a></h2>
+
+      </div>
+    </div>
+  </section>
+  <section class="footer ">
+    <div class="content is-mobile has-text-centered is-primary">
+      <p>Author: Manuel Andrés Carrera Galafate</p>
+      <p>Asignatura: Programación de Aplicaciones Interactivas 2020</p>
+      <p>Práctica 9. Random Walk. Programación Gráfica y Orientada a Objetos en JS</p>
+    </div>
+  </section>
+</body>
+
 </html>

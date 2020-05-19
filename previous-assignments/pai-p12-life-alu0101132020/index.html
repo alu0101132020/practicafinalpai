@@ -1,13 +1,3 @@
-<!--  
-   Universidad de La Laguna
-	 Escuela Superior de Ingeniería y Tecnología
-	 Computer Ingenieering Degree
-	 Interactive Application Programming
-
-   @author      Manuel Andrés Carrera Galafate
-   @since 9.May.2020
--->
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,44 +5,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carrera Galafate Manuel Andrés</title>
-  <meta name="viewport" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  <link rel="stylesheet" type="text/css" href="src/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script language="javascript" type="text/javascript" src="mandlebrot.js" defer></script>
+  <script language="javascript" type="text/javascript" src="complex-number.js"defer></script>
 </head>
 
-<body>
-  <header>
-    <nav>
-      <div id="name">
-        Carrera Galafate<strong> Manuel Andrés</strong>
-      </div>
-      <div id="links">
+<body onload="mandlebrot();">
+  <section class="hero is-dark">
+      <nav class="navbar  has-shadow" role="navigation" aria-label="main navigation">
+        <div class="container">
+          <div class="navbar-brand">
+            <div class="navbar-burger burger"  data-target="navbar-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+  
+          <div class="navbar-menu" id="navbar-menu">
+            <div class="navbar-start">
+              <span class="title">Conway's Game Of Life</span>
+            </div>
+      
+            <!-- navbar items | right side -->
+            <div class="navbar-end">
+              <a class="navbar-item" href="../../index.html">
+                  Volver a índice
+                </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+  <section class="hero is-fullheight is-primary">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h2 class="title">Game Of Life. Graphic, Object Oriented and Even Driven Programming in JS.</h2>
         <a href="src/manuel-andres-carrera-galafate-life.html">Life</a>
         <a href="docs/game-of-life/index.html">Life - Documentation</a>
         <a href="src/manuel-andres-carrera-galafate-tests.html">Life - Tests</a>
         <a href="coverage/index.html">Life - Coverage</a>
         <a href="src/manuel-andres-carrera-galafate-UML.html">Life - UML</a>
         <a href="src/poker/manuel-andres-carrera-galafate-poker.html">Ejecicio prácticas</a>
+
       </div>
-    </nav>
-
-    <h1>
-      <strong>Assignment 12:</strong>
-      <br><br>
-      <p>Game Of Life. Graphic, Object Oriented and Even Driven Programming in JS.</p>
-    </h1>
-    <div class="LifeText">
-      <h3>Conway's Game Of Life</h3>
-      <a class="button" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Learn more</a>
     </div>
-  </header>
-
-  <footer>
-    <br>
-    <h4>Universidad de La Laguna</h4>
-    <h4>Escuela Superior de Ingeniería y Tecnología</h4>
-    <h4>Programación de Aplicaciones Interactivas</h4>
-    <br>
-  </footer>
+  </section>
+  <section class="footer ">
+    <div class="content is-mobile has-text-centered is-primary">
+      <p>Author: Manuel Andrés Carrera Galafate</p>
+      <p>Asignatura: Programación de Aplicaciones Interactivas 2020</p>
+      <p>Game Of Life. Graphic, Object Oriented and Even Driven Programming in JS.</p>
+    </div>
+  </section>
 </body>
 
 </html>

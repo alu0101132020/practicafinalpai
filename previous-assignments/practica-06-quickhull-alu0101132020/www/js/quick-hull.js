@@ -194,13 +194,11 @@ const CANVAS = document.getElementById('quick-hull');
  * @description - Función principal del programa.
  */
 const draw = () => {
-  CANVAS.width = window.innerWidth;
-  CANVAS.height = window.innerHeight;
   if (CANVAS.getContext) {
     const numberOfPoints = prompt('Enter the number of points that the converx hull will be made of:', '0');
     if (numberOfPoints > 0) {
       const ctx = CANVAS.getContext('2d');
-      ctx.translate(CANVAS.height * 0.08, CANVAS.width * 0.053);
+      // ctx.translate(CANVAS.height * 0.08, CANVAS.width * 0.053);
       const arrayOfPoints = getArrayOfPoints(numberOfPoints, CANVAS);
       drawAllPoints(arrayOfPoints, ctx, BLACK);
       convexHull(arrayOfPoints, ctx);
