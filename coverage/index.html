@@ -14,9 +14,44 @@
             background-image: url(sort-arrow-sprite.png);
         }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
 </head>
     
 <body>
+    <section class="hero is-dark">
+        <nav class="navbar  has-shadow" role="navigation" aria-label="main navigation">
+          <div class="container">
+            <div class="navbar-brand">
+              <div class="navbar-burger burger"  data-target="navbar-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+    
+            <div class="navbar-menu" id="navbar-menu">
+              <div class="navbar-start">
+                <span class="title">Bouncing ball</span>
+              </div>
+        
+              <!-- navbar items | right side -->
+              <div class="navbar-end">
+                <a class="navbar-item" href="../src/bouncing-ball.html">
+                    Volver a índice
+                  </a>
+                <a class="navbar-item" href="../src/manuel-andres-carrera-galafate-bouncing-ball.html">Bouncing ball</a>
+                <a class="navbar-item" href="../docs/bouncingball/index.html">Documentation</a>
+                <a class="navbar-item" href="../src/manuel-andres-carrera-galafate-tests.html">Tests</a>
+                <a class="navbar-item is-active" href="../coverage/index.html">Cubrimiento</a>
+                <a class="navbar-item" href="../src/manuel-andres-carrera-galafate-UML.html">UML</a>
+                <a class="navbar-item" href="../src/manuel-andres-carrera-galafate-ejercicio.html">Ejercicio</a>
+              </div>
+        
+            </div>
+          </div>
+        </nav>
+      </section>
 <div class='wrapper'>
     <div class='pad1'>
         <h1>All files</h1>
@@ -136,6 +171,13 @@
         </script>
         <script src="sorter.js"></script>
         <script src="block-navigation.js"></script>
+        <section class="footer ">
+            <div class="content is-mobile has-text-centered is-primary">
+              <p>Author: Manuel Andrés Carrera Galafate</p>
+              <p>Asignatura: Programación de Aplicaciones Interactivas 2020</p>
+              <p>Práctica 13. Bouncing Ball. Programación Gráfica, Orientada a Objetos y dirigida por eventos en JS.</p>
+            </div>
+          </section>
     </body>
 </html>
     
