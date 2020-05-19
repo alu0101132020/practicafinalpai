@@ -28,7 +28,7 @@ if (typeof(window) === 'undefined') {
   BallClass = Ball;
 }
 
-const BALL_RADIUS = 50;
+const BALL_RADIUS = 20;
 const BORDER_COLOR = 'black';
 const BACKGROUND_COLOR = 'white';
 /**
@@ -47,15 +47,19 @@ class BouncingScreen {
   constructor(canvas) {
     this.maxX = canvas.width;
     this.maxY = canvas.height;
-    this.ball = new BallClass((this.maxX - BALL_RADIUS) * Math.random(),
-      (this.maxY - BALL_RADIUS) * Math.random(), BALL_RADIUS,
-      this.getRandomColor());
-    // Comprobamos que la pelota no esté fuera por ninguno de los dos lados.
-    if (this.ball.position.x - this.ball.radius < 0) {
-      this.ball.position.x = BALL_RADIUS;
-    }
-    if (this.ball.position.y - this.ball.radius < 0) {
-      this.ball.position.y = BALL_RADIUS;
+    this.balls = [];
+    for (let currentBall = 0; currentBall < 100000; currentBall++) {
+      let ball = new BallClass((this.maxX - BALL_RADIUS) * Math.random(),
+        (this.maxY - BALL_RADIUS) * Math.random(), BALL_RADIUS,
+        this.getRandomColor());
+      // Comprobamos que la pelota no esté fuera por ninguno de los dos lados.
+      if (ball.position.x - ball.radius < 0) {
+        ball.position.x = BALL_RADIUS;
+      }
+      if (ball.position.y - ball.radius < 0) {
+        ball.position.y = BALL_RADIUS;
+      }
+      this.balls.push(ball);
     }
     this.canvas = canvas;
     this.backgroundColor = BACKGROUND_COLOR;
@@ -68,7 +72,9 @@ class BouncingScreen {
    */
   drawScreen() {
     this.drawBackground();
-    this.ball.drawBall(this.canvas);
+    for (const ball of this.balls) {
+     ball.drawBall(this.canvas);
+    }
   }
 
   /* istanbul ignore next */
@@ -91,7 +97,9 @@ class BouncingScreen {
    */
   nextFrame() {
     this.checkBordersReached();
-    this.ball.updatePosition();
+    for (const ball of this.balls) {
+      ball.updatePosition();
+    }
   }
 
   /* istanbul ignore next */
@@ -136,21 +144,23 @@ class BouncingScreen {
    * que ha llegado moviéndose la pelota.
    */
   checkBordersReached() {
-    if (this.ball.position.x + this.ball.radius > this.maxX) {
-      this.ball.color = this.getRandomColor();
-      this.ball.direction.x *= -1;
-    } else if (this.ball.position.x - this.ball.radius < 0) {
-      this.ball.color = this.getRandomColor();
-      this.ball.direction.x *= -1;
+    for (const ball of this.balls) {
+      if (ball.position.x + ball.radius > this.maxX) {
+        ball.color = this.getRandomColor();
+        ball.direction.x *= -1;
+      } else if (ball.position.x - ball.radius < 0) {
+        ball.color = this.getRandomColor();
+        ball.direction.x *= -1;
+      }
+      if (ball.position.y + ball.radius > this.maxY) {
+        ball.color = this.getRandomColor();
+        ball.direction.y *= -1;
+      } else if (ball.position.y - ball.radius < 0) {
+        ball.color = this.getRandomColor();
+        ball.direction.y *= -1;
+      }
+      }
     }
-    if (this.ball.position.y + this.ball.radius > this.maxY) {
-      this.ball.color = this.getRandomColor();
-      this.ball.direction.y *= -1;
-    } else if (this.ball.position.y - this.ball.radius < 0) {
-      this.ball.color = this.getRandomColor();
-      this.ball.direction.y *= -1;
-    }
-  }
 }
 
 if (typeof(window) === 'undefined') {
