@@ -31,6 +31,7 @@ if (typeof(window) === 'undefined') {
 const BALL_RADIUS = 20;
 const BORDER_COLOR = 'black';
 const BACKGROUND_COLOR = 'white';
+const NUMBER_OF_BALLS = 100;
 /**
  * @description Clase pantalla. Una pantalla estará definida por las dimensiones
  * de un canvas y contendrá una pelota que se moverá a lo largo de la pantalla
@@ -48,7 +49,7 @@ class BouncingScreen {
     this.maxX = canvas.width;
     this.maxY = canvas.height;
     this.balls = [];
-    for (let currentBall = 0; currentBall < 100000; currentBall++) {
+    for (let currentBall = 0; currentBall < NUMBER_OF_BALLS; currentBall++) {
       let ball = new BallClass((this.maxX - BALL_RADIUS) * Math.random(),
         (this.maxY - BALL_RADIUS) * Math.random(), BALL_RADIUS,
         this.getRandomColor());
