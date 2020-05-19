@@ -28,8 +28,9 @@ if (typeof(window) === 'undefined') {
   BallClass = Ball;
 }
 
-const BALL_RADIUS = 5;
-const BLACK_COLOR_BALL_SCREEN = 'black';
+const BALL_RADIUS = 50;
+const BORDER_COLOR = 'black';
+const BACKGROUND_COLOR = 'white';
 /**
  * @description Clase pantalla. Una pantalla estará definida por las dimensiones
  * de un canvas y contendrá una pelota que se moverá a lo largo de la pantalla
@@ -45,9 +46,109 @@ class BouncingScreen {
    */
   constructor(canvas) {
     this.maxX = canvas.width;
-    this.maxY = canvas.length;
-    this.ball = new BallClass(canvas.width / 2, canvas.length / 2, BALL_RADIUS,
-      BLACK_COLOR_BALL_SCREEN);
+    this.maxY = canvas.height;
+    this.ball = new BallClass((this.maxX - BALL_RADIUS) * Math.random(),
+      (this.maxY - BALL_RADIUS) * Math.random(), BALL_RADIUS,
+      this.getRandomColor());
+    // Comprobamos que la pelota no esté fuera por ninguno de los dos lados.
+    if (this.ball.position.x - this.ball.radius < 0) {
+      this.ball.position.x = BALL_RADIUS;
+    }
+    if (this.ball.position.y - this.ball.radius < 0) {
+      this.ball.position.y = BALL_RADIUS;
+    }
+    this.canvas = canvas;
+    this.backgroundColor = BACKGROUND_COLOR;
+    this.borderColor = BORDER_COLOR;
+  }
+
+  /* istanbul ignore next */
+  /**
+   * @description Función que dibuja la pelota en pantalla.
+   */
+  drawScreen() {
+    this.drawBackground();
+    this.ball.drawBall(this.canvas);
+  }
+
+  /* istanbul ignore next */
+  /**
+   * @description Función que se encarga de pintar el fondo, útil para dar la
+   * sensación de animación.
+   */
+  drawBackground() {
+    const ctx = this.canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.rect(0, 0, this.maxX, this.maxY);
+    ctx.fillStyle = this.backgroundColor;
+    ctx.fill();
+    ctx.strokeStyle = this.borderColor;
+    ctx.stroke();
+  }
+
+  /**
+   * @description Función que se encarga de controlar el movimiento de la pelota.
+   */
+  nextFrame() {
+    this.checkBordersReached();
+    this.ball.updatePosition();
+  }
+
+  /* istanbul ignore next */
+  /**
+   * @description Función recursiva que mientras el flag de parada no esté a
+   * verdadero sigue generando la siguiente configuración de la partida.
+   */
+  async animation() {
+    while(true) {
+      await this.sleep(10);
+      this.drawScreen();
+      this.nextFrame();
+    }
+  } 
+ 
+  /* istanbul ignore next */
+  /**
+   * @description Función que pausa la partida durante un número de milisegundos.
+   * @param {int} msToWait Número de milissegundo a esperar.
+   */
+  sleep = (msToWait) => {
+    return new Promise(resolve => setTimeout(resolve, msToWait))
+  }
+
+  /* istanbul ignore next */
+  /**
+   * @description Función que retorna un color aleatorio en el espectro rgb
+   * generando para cada una de las 3 componentes un valor aleatorio
+   * entre 0 y 255
+   */
+  getRandomColor() {
+    const red = Math.floor(256 * Math.random());
+    const green = Math.floor(256 * Math.random());
+    const blue = Math.floor(256 * Math.random());
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
+}
+
+  /**
+   * @description Función que comprueba si la pelota ha llegado a alguno de los
+   * bordes de la pantalla. Si lo ha hecho invierte la dirección del eje en el
+   * que ha llegado moviéndose la pelota.
+   */
+  checkBordersReached() {
+    if (this.ball.position.x + this.ball.radius > this.maxX) {
+      this.ball.color = this.getRandomColor();
+      this.ball.direction.x *= -1;
+    } else if (this.ball.position.x - this.ball.radius < 0) {
+      this.ball.color = this.getRandomColor();
+      this.ball.direction.x *= -1;
+    }
+    if (this.ball.position.y + this.ball.radius > this.maxY) {
+      this.ball.color = this.getRandomColor();
+      this.ball.direction.y *= -1;
+    } else if (this.ball.position.y - this.ball.radius < 0) {
+      this.ball.color = this.getRandomColor();
+      this.ball.direction.y *= -1;
+    }
   }
 }
 

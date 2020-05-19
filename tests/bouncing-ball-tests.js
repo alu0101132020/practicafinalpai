@@ -29,10 +29,11 @@ if (typeof(window) === 'undefined') {
   const chai = require('chai');
   expectTest2 = chai.expect;
   BallTest = require('../src/ball');
-  let BouncingScreenTest = null;
+  BouncingScreenTest = require('../src/bouncing-screen');
 } else {
-  BallTest = Ball;
   expectTest2 = expect;
+  BallTest = Ball;
+  BouncingScreenTest = BouncingScreen;
 }
 
 describe ('Ball', () => {
@@ -59,4 +60,31 @@ describe ('Ball', () => {
       expectTest2(previousXPos).to.not.equal(testBall.position.x);
     });
   });
+});
+
+describe ('BouncingScreen', () => {
+  describe('getters', () => {
+  let canvas = {height : 0, width : 0}
+  canvas.height = 400;
+  canvas.width = 300;
+  let myScreen = new BouncingScreenTest(canvas);
+    it ('should return 300 as maxX of screen', () => {
+      expectTest2(myScreen.maxX).to.equal(300);
+    });
+    it ('should return 400 as maxY of screen', () => {
+      expectTest2(myScreen.maxY).to.equal(400);
+    });
+  });
+  describe('next frame', () => {
+    let canvas = {height : 0, width : 0}
+    canvas.height = 400;
+    canvas.width = 300;
+    let myScreen = new BouncingScreenTest(canvas);
+    myScreen.ball.position.x = 250;
+    myScreen.ball.position.y = 200;
+    myScreen.nextFrame();
+    it ('ball change 250 as new position on x to another', () => {
+      expectTest2(myScreen.ball.position.x).to.not.equal(250);
+    })
+  })
 });

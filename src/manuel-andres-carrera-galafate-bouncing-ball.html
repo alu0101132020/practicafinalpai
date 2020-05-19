@@ -1,0 +1,77 @@
+<!--  
+   Universidad de La Laguna
+	 Escuela Superior de Ingeniería y Tecnología
+	 Computer Ingenieering Degree
+	 Interactive Application Programming
+
+   @author      Manuel Andrés Carrera Galafate
+   @since 16.May.2020
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrera Galafate Manuel Andrés</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script language="javascript" type="text/javascript" src="point.js" defer></script>
+  <script language="javascript" type="text/javascript" src="ball.js" defer></script>
+  <script language="javascript" type="text/javascript" src="bouncing-screen.js" defer></script>
+  <script language="javascript" type="text/javascript" src="main.js" defer></script>
+</head>
+
+<body onload="start();">
+  <section class="hero is-dark">
+    <nav class="navbar  has-shadow" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../src/bouncing-ball.html">
+            Volver a índice
+          </a>
+          <div class="navbar-burger burger"  data-target="navbar-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="navbar-menu" id="navbar-menu">
+          <div class="navbar-start">
+            <span class="title">Bouncing ball</span>
+          </div>
+    
+          <!-- navbar items | right side -->
+          <div class="navbar-end">
+            <a class="navbar-item is-active" href="/">Bouncing ball</a>
+            <a class="navbar-item" href="#">Documentation</a>
+            <a class="navbar-item" href="#">Tests</a>
+            <a class="navbar-item" href="#">Cubrimiento</a>
+            <a class="navbar-item" href="#">UML</a>
+            <a class="navbar-item" href="#">Ejercicio</a>
+          </div>
+    
+        </div>
+      </div>
+    </nav>
+  </section>
+  <section class="hero is-fullheight is-primary">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <canvas id="bounce" width="1400" height="700" style="border: black solid 2px"></canvas>
+      </div>
+    </div>
+  </section>
+  <section class="footer ">
+    <div class="content is-mobile has-text-centered is-primary">
+      <p>Author: Manuel Andrés Carrera Galafate</p>
+      <p>Asignatura: Programación de Aplicaciones Interactivas 2020</p>
+      <p>Práctica 11 PAI - Ajedrez. Programación Gráfica y Orientada a Objetos en JS.</p>
+    </div>
+  </section>
+</body>
+
+</html>

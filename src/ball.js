@@ -28,8 +28,8 @@ if (typeof(window) === 'undefined') {
   PointClass = Point;
 }
 
-const BASE_SPEED = 5;
-const MAX_SPEED = 10
+const BASE_SPEED = 1;
+const MAX_SPEED = 10;
 /**
  * @description Clase pelota. Esta clase está preparada para ser dibujada en
  * un canvas en un HTML, para ello tiene definida una posición X y una posicón
@@ -50,7 +50,11 @@ class Ball {
     this.position = new PointClass (positionX, positionY);
     this.radius = radius;
     this.color = color;
-    this.direction = new PointClass (BASE_SPEED + Math.random() * MAX_SPEED, BASE_SPEED + Math.random() * MAX_SPEED);
+    // Valores que servirán para aleatorizar la dirección inicial.
+    const randomX = Math.random() > 0.5 ? 1 : -1; 
+    const randomY = Math.random() > 0.5 ? 1 : -1;
+    this.direction = new PointClass (BASE_SPEED + Math.random() * MAX_SPEED * randomX,
+      BASE_SPEED + Math.random() * MAX_SPEED * randomY);
   }
 
   /**
