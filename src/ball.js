@@ -66,6 +66,7 @@ class Ball {
     this.position.y += this.direction.y;
   }
 
+    /* istanbul ignore next */
   /**
    * @description Función que dibuja la pelota sobre un canvas usando las distintas
    * propiedades de la pelota.

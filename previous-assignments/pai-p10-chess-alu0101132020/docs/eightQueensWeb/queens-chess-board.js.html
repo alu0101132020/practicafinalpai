@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: queens-chess-board.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: queens-chess-board.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ *  Escuela Superior de Ingeniería y Tecnología
+ *  Grado en Ingeniería Informática
+ *  Asignatura: Programación de Aplicaciones Interactivas
+ *  Curso: 3º
+ *  Práctica 11 PAI - Ajedrez. Programación Gráfica y Orientada a Objetos en JS.
+ *  @author: Manuel Andrés Carrera Galafate
+ *  @since 02/05/2020
+ *  @desc Clase tablero de ajedrez de reinas.
+ *  References:
+ *              Enunciado de la práctica:
+ *              https://github.com/fsande/PAI-P11-Chess/blob/master/2019-2020_p10_Chess.md
+ *              Descripción del camino aleatorio.
+ *              https://es.wikipedia.org/wiki/Problema_de_las_ocho_reinas
+ *  Repositorio git con este (y otros) códigos:
+ *              https://github.com/ULL-ESIT-INF-PAI-2019-2020/pai-p10-chess-alu0101132020
+ *
+ *  @file Fichero que contiene la implementación de la clase tablero de ajedrez
+ *  para el problema de las 8 reinas.
+ *
+ *  @version  02/05/2020 - Creación (primera versión) del código.
+ */
+
+'use strict';
+
+let readLineSync = null;
+let performanceVar = null;
+let ChessBoardClass = null;
+let PointClass = null;
+
+if (typeof (window) === 'undefined') {
+  ChessBoardClass = require('../src/chess-board');
+  readLineSync = require('readline-sync');
+  performanceVar = require('perf_hooks').performance;
+  PointClass = require('../src/point');
+} else {
+  ChessBoardClass = ChessBoard;
+  PointClass = Point;
+  performanceVar = performance;
+}
+
+/**
+ * @description Clase tablero de ajedrez de reinas.
+ */
+class ChessBoardQueens extends ChessBoardClass {
+  /**
+   * @description Constructor de un tablero que recibe 3 parámetros que lo
+   * definirán, siendo la altura, la anchura del mismo y la definición de si el problema
+   * es el general o el clásico.. El tablero contendrá
+   * como atributos una altura, una anchura, un conjunto de casillas, un contador
+   * de soluciones, un conjunto de soluciones y un booleano que define el tipo de
+   * problema. En el tablero de reinas en cada casilla habrá un booleano
+   * que nos indicará si hay una reina (true) o si no la hay (false).
+   * @param {int} chessBoardWidth Anchura del tablero
+   * @param {int} chessBoardLength Altura del tablero
+   * @param {bool} generalized Define si el problema se va a resolver de manera
+   * clásica (false) o generalizada (true)
+   */
+  constructor(chessBoardWidth = 8, chessBoardLength = 8, generalized = true) {
+    super(chessBoardWidth, chessBoardLength);
+    this.currentSolutions = 0;
+    this.solutions = [];
+    this.generalized = generalized;
+  }
+
+  /* istanbul ignore next */
+  /**
+  * @desc Imprime el tablero
+  * @param {array} solution - Tablero a escribir.
+  */
+  printBoard(solution) {
+    let indexString = '';
+    const chessColsIndex = [];
+    let chessAlgebraicIndex = '  ';
+    for (let index = 0; index &lt; solution.length; index++) {
+      indexString += solution.length - index;
+    }
+    for (let index = 0; index &lt; solution[0].length; index++) {
+      chessColsIndex.push(index + 97);
+      chessAlgebraicIndex += String.fromCharCode(chessColsIndex[index]) + ' ';
+    }
+    console.log(chessAlgebraicIndex);
+    for (let currentRow = 0; currentRow &lt; solution.length; currentRow++) {
+      let mystring = indexString[currentRow] + ' ';
+      for (let currentCol = 0; currentCol &lt; solution[currentRow].length;
+        currentCol++) {
+        mystring += (solution[currentRow][currentCol] === false) ? '. ' : 'Q ';
+      }
+      console.log(mystring);
+    }
+    console.log('\n');
+  };
+
+  /**
+   * @desc Se comprueba si la configuración del tablero es solución viendo el
+   * número de reinas colocadas, y si lo es, se imprime la solución
+   * @return {bool} Retorna false si aún no es solución y true si es solución
+   * @param {number} foundQueens - Número de reinas encontradas hasta el momento.
+   * @param {number} queensToFind - Número de reinas a encontrar.
+   */
+  checkIfSolution(foundQueens, queensToFind) {
+    if (foundQueens &lt; queensToFind - 1) {
+      return false;
+    } else {
+      let newArray = this.squares.map(function (arr) {
+        return arr.slice();
+      });
+      this.solutions.push(newArray);
+      this.currentSolutions++;
+
+      if (typeof (window) === 'undefined') {
+        // readLineSync.question();
+      }
+      clockStart = performanceVar.now();
+      return true;
+    }
+  };
+
+  /**
+   * @desc Función que comprueba si la reina de la columna foundQueens en la
+   * fila currentRow es amenazada horizontalmente por alguna de las reinas
+   * anteriormente colocadas. Para ello miramos si la fila actual está contenida
+   * en el array del tablero. Si esto ocurre significa que en esa fila hay una
+   * reina, ya que las posiciones del array tablero representan la fila en la que
+   * se encuentra la reina de índice i.
+   * @return {bool} Retorna true si la reina no es amenazada horizontalmente y
+   * false si esto ocurre
+   * @param {number} currentRow - Entero que contiene la información de en qué
+   * fila irá la reina de índice foundQueens si se cumplen las condiciones.
+     */
+  checkFreeRow(currentRow) {
+    for (let currentCol = 0; currentCol &lt; this.squares[currentRow].length;
+      currentCol++) {
+      if (this.squares[currentRow][currentCol] === true) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+
+  /**
+   * @desc Función que comprueba si la reina de la columna foundQueens en la
+   * fila currentRow es amenazada diagonalmente por alguna de las reinas
+   * anteriormente colocadas. Para ello, para cada reina del tablero que ya
+   * ha sido colocada se avanza diagonalmente hacia la derecha tanto para
+   * arriba como para abajo buscando si se coincide en filas y columnas al coger
+   * la fila y columna de la dicha reina + las posiciones avanzadas diagonalmente
+   * hacia arriba y hacia abajo.
+   * @return {bool} Retorna true si la reina no es amenazada diagonalmente y
+   * false si esto ocurre
+   * @param {chessBoard} chessBoard - Matriz que contiene toda la información
+   * de la disposición del tablero. En cada posición de la matriz almacena un
+   * booleano que nos dice si hay una reina colocada o no.
+   * @param {number} currentRow - Entero que contiene la información de en qué
+   * fila irá la reina de índice foundQueens si se cumplen las condiciones.
+   * @param {number} foundQueens - Número de reinas encontradas hasta el momento,
+   * lo que nos servirá como índice para las columnas en la función
+   * checkFreeDiag.
+   */
+  checkFreeDiag(currentRow, foundQueens) {
+    for (let checkingCol = 0; checkingCol &lt; this.squares.length; checkingCol++) {
+      for (let checkingRow = 0; checkingRow &lt; this.squares.length;
+        checkingRow++) {
+        if (this.squares[checkingRow][checkingCol] === true) {
+          let currentDiag = 0;
+          while (currentDiag + checkingRow &lt; this.squares.length ||
+            checkingRow - currentDiag > -1) {
+            if (((checkingRow + currentDiag === currentRow &amp;&amp;
+              checkingCol + currentDiag === foundQueens)) ||
+              ((checkingRow - currentDiag === currentRow &amp;&amp;
+                checkingCol + currentDiag === foundQueens))) {
+              return false;
+            }
+            currentDiag++;
+          }
+        }
+      }
+    }
+    return true;
+  };
+
+  /* istanbul ignore next */
+  /**
+   * @desc - Función que obtiene la función de la recta a partir
+   * de dos puntos.
+   * @return {line} - Retorna un array que contiene la función de la línea
+   * defindia por los dos puntos pasados como parámetros.
+   * @param  {point} firstPoint
+   * @param  {point} secondPoint
+   */
+  lineFromTo(firstPoint, secondPoint) {
+    const straightFunction = (secondPoint.y -
+      firstPoint.y) / (secondPoint.x -
+        firstPoint.x);
+    const interception = secondPoint.y - straightFunction *
+      (secondPoint.x);
+
+    return new PointClass(straightFunction, interception);
+  };
+
+  /* istanbul ignore next */
+  /**
+   * @desc - Función que a partir de una línea definida por su función
+   * y un punto nos dice si el punto pertenece a la recta.
+   * @return {bool} - Retorna true si la recta contiene al punto o false
+   * en caso contrario
+   * @param  {point} point
+   * @param  {straightLine} line
+   */
+  isPointInLine(point, line) {
+    if (point.y === ((line.x * point.x) + line.y)) {
+      return true;
+    }
+    return false;
+  };
+
+  /* istanbul ignore next */
+  /**
+   * @desc - Función que comprueba si la nueva reina a colocar se encuentra
+   * en alguna de las rectas que se forman entre cada pareja de reinas, es
+   * decir, verifica que no hay un trío o grupo superior de reinas que se
+   * encuentren en línea recta.
+   * @return {bool} - Retorna true si la nueva reina no forma una línea recta
+   * con otras 2 reinas, o false en caso contrario
+   * @param {chessBoard} chessBoard - Matriz que contiene toda la información
+   * de la disposición del tablero. En cada posición de la matriz almacena un
+   * booleano que nos dice si hay una reina colocada o no.
+   * @param {int} currentRow - Valor que nos indica cual es la fila de la
+   * reina que estamos comprobando en este momento.
+   * @param {int} foundQueens - Valor que nos indica simultáneamente el número
+   * de reinas que hay en el tablero y por consiguiente el número de columna
+   * que tendrá la nueva reina a colocar.
+   */
+  checkNotThreeInLine(currentRow, foundQueens) {
+    for (let currentQueenCol = 0; currentQueenCol &lt; foundQueens;
+      currentQueenCol++) {
+      for (let currentQueenRow = 0; currentQueenRow &lt; this.squares.length;
+        currentQueenRow++) {
+        if (this.squares[currentQueenRow][currentQueenCol] === true) {
+          for (let secondQueenCol = currentQueenCol + 1;
+            secondQueenCol &lt; foundQueens; secondQueenCol++) {
+            for (let secondQueenRow = 0; secondQueenRow &lt; this.squares.length;
+              secondQueenRow++) {
+              if (this.squares[secondQueenRow][secondQueenCol] === true) {
+                const firstPoint = new PointClass(currentQueenRow, currentQueenCol);
+                const secondPoint = new PointClass(secondQueenRow, secondQueenCol);
+                const newQueenPoint = new PointClass(currentRow, foundQueens);
+                const lineFunction = this.lineFromTo(firstPoint, secondPoint);
+                if (this.isPointInLine(newQueenPoint, lineFunction)) {
+                  return false;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  /* istanbul ignore next */
+  /**
+   * @desc Función que se encarga de comprobar si ambas condiciones para colocar
+   * una nueva reina se cumplen.
+   * @return {bool} Retorna si se cumplen las condiciones o no
+   * @param {chessBoard} chessBoard - Matriz que contiene toda la información
+   * de la disposición del tablero. En cada posición de la matriz almacena un
+   * booleano que nos dice si hay una reina colocada o no.
+   * @param {number} currentRow - Entero que contiene la información de en qué
+   * fila irá la reina de índice foundQueens si se cumplen las condiciones.
+   * @param {number} foundQueens - Número de reinas encontradas hasta el momento,
+   * lo que nos servirá como índice para las columnas en la función
+   * checkFreeDiag.
+   */
+  hasNoThreat(currentRow, foundQueens) {
+    if (this.generalized) {
+      if (this.checkFreeRow(currentRow) &amp;&amp;
+        this.checkFreeDiag(currentRow, foundQueens) &amp;&amp;
+        this.checkNotThreeInLine(currentRow, foundQueens)) {
+        return true;
+      }
+      return false;
+    } else {
+      if (this.checkFreeRow(currentRow) &amp;&amp;
+        this.checkFreeDiag(currentRow, foundQueens)) {
+        return true;
+      }
+      return false;
+    }
+  }
+
+  /* istanbul ignore next */
+  /**
+   * @desc Función principal del programa. Se encarga de hacer la llamada
+   * recursiva cuando aún no se ha encontrado solución (no se han colocado
+   * 8 reinas) si se puede colocar una reina y es la encargada de ir eliminando
+   * las reinas ya comprobadas.
+   * @param {array} chessBoard - El tablero está representado por una matriz
+   * de booleanos, donde un 1 indica que hay una reina y un 0 que no lo hay.
+   * Además, como en la implementación tenemos en consideración que en cada
+   * columna solo habrá una reina, sabremos siempre que desde la columna 0
+   * hasta la columna foundQueens habrá exactamente el valor foundQueens de
+   * reinas encontradas.
+   * @param {number} foundQueens - Número de reinas ya encontradas al hacer
+   * la llamada
+   * @param {number} queensToFind - Número de reinas para el que hay que
+   * solucionar el problema
+   */
+  findQueens(foundQueens, queensToFind) {
+    for (let currentRow = 0; currentRow &lt; this.squares.length; currentRow++) {
+      if (this.hasNoThreat(currentRow, foundQueens)) {
+        this.squares[currentRow][foundQueens] = true;
+        if (!this.checkIfSolution(foundQueens, queensToFind)) {
+          this.findQueens(foundQueens + 1, queensToFind);
+          this.squares[currentRow][foundQueens] = false;
+        } else {
+          this.squares[currentRow][foundQueens] = false;
+        }
+      }
+    }
+  }
+
+  /* istanbul ignore next */
+  /**
+   * @description Función principal que resuelve el problema de las 8 reinas.
+   * @param {int} solutions Número de soluciones a encontrar.
+   */
+  findSolutions(solutions) {
+    this.currentSolutions = 0;
+    this.findQueens(0, solutions);
+  }
+}
+
+let clockStart = performanceVar.now();
+
+if (typeof (window) === 'undefined') {
+  module.exports = ChessBoardQueens;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ChessBoard.html">ChessBoard</a></li><li><a href="ChessBoardQueens.html">ChessBoardQueens</a></li><li><a href="ChessPiece.html">ChessPiece</a></li><li><a href="DrawableChessBoard.html">DrawableChessBoard</a></li><li><a href="DrawableChessBoardQueens.html">DrawableChessBoardQueens</a></li><li><a href="DrawableChessPiece.html">DrawableChessPiece</a></li><li><a href="Point.html">Point</a></li></ul><h3>Global</h3><ul><li><a href="global.html#clearUnnecesaryInfo">clearUnnecesaryInfo</a></li><li><a href="global.html#generateQueensProblem">generateQueensProblem</a></li><li><a href="global.html#printEmptyBoard">printEmptyBoard</a></li><li><a href="global.html#printNormalBoard">printNormalBoard</a></li><li><a href="global.html#showNextSolution">showNextSolution</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed May 06 2020 00:48:15 GMT+0100 (Western European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -129,6 +129,7 @@ class BouncingScreen {
     return 'rgb(' + red + ',' + green + ',' + blue + ')';
 }
 
+  /* istanbul ignore next */
   /**
    * @description Función que comprueba si la pelota ha llegado a alguno de los
    * bordes de la pantalla. Si lo ha hecho invierte la dirección del eje en el

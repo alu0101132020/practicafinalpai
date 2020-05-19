@@ -1,0 +1,15 @@
+{
+  "name": "mandlebrot",
+  "version": "1.0.0",
+  "description": "Package jason de la implementación del conjunto de Mandlebrot",
+  "main": "complex-number.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manuel Andrés Carrera Galafate",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

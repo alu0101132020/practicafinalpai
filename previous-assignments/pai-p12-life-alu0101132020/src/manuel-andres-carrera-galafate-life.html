@@ -1,0 +1,64 @@
+<!--  
+   Universidad de La Laguna
+	 Escuela Superior de Ingeniería y Tecnología
+	 Computer Ingenieering Degree
+	 Interactive Application Programming
+
+   @author      Manuel Andrés Carrera Galafate
+   @since 9.May.2020
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrera Galafate Manuel Andrés</title>
+  <meta name="viewport" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script language="javascript" type="text/javascript" src="cell.js" defer></script>
+  <script language="javascript" type="text/javascript" src="grid-of-cells.js" defer></script>
+  <script language="javascript" type="text/javascript" src="life.js" defer></script>
+  <script language="javascript" type="text/javascript" src="main.js" defer></script>
+</head>
+
+<body onload="startGame();">
+  <h1 class="site-title">Conway's Game Of Life</h1>
+  <ul id="right-nav">
+    <li><a href="../index.html">Volver a índice</a></li>
+  </ul>
+</header>
+  <div id="parte-principal">
+    <div id="caja-izquierda">
+      <input class="boton-caja-izq" type="button" value="Inicio" onclick="startAutoRun();" />
+      <input class="boton-caja-izq" type="button" value="Pausa" onclick="stopAutoRun();" />
+      <input class="boton-caja-izq" type="button" value="Paso" onclick="nextGeneration();" />
+      <input class="boton-caja-izq" type="button" value="Fin" onclick="startGame();" />
+      <input class="boton-caja-izq" type="button" value="Crear estado aleatorio" onclick="randomizeState();" />
+      <input class="boton-caja-izq" type="button" value="Añadir células" onclick="makeNCellsAlive();" />
+      <label id="cells-box" for="cells-to-introduce">Número de células vivas a añadir.</label>
+      <br>
+      <input type="text" id="cells-to-introduce" name="cells-to-introduce">
+    </div>
+    <div id="gameGrid">
+      <canvas id="game" width="700" height="700"></canvas>
+    </div>
+    <div id="caja-derecha">
+      <div id="alive-text"></div>
+      <div id="dead-text"></div>
+      <div>
+        <label for="speed">Velocidad</label><br>
+        <input type="range" id="speed" name="speed" min="0" max="1000" onChange="updateSlider();" onKeyUp="updateSlider();">
+      </div>
+    </div>
+  </div>
+<footer id="pie-de-pagina">
+  <p>Author: Manuel Andrés Carrera Galafate</p>
+  <p>Asignatura: Programación de Aplicaciones Interactivas 2020</p>
+  <p>Práctica 11 PAI - Ajedrez. Programación Gráfica y Orientada a Objetos en JS.</p>
+</footer>
+</body>
+
+</html>

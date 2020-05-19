@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="mocha/mocha.css" />
+    <script language="javascript" type="text/javascript" src="manuel-andres-carrera-galafate-ejercicio2-2.js"></script>
+    <script src="chai/chai.js"></script>
+    <script src="mocha/mocha.js"></script>
+    <title>Carrera Galafate</title>
+    <script> const expect = chai.expect; </script>
+    <script>
+      mocha.setup("bdd");
+    </script>
+    <script src="test/tests2.js"></script>
+  </head>
+
+  <body>
+      <div id="mocha"></div>
+      <script>
+        window.onload = function() {
+          mocha.run()
+        };
+      </script>
+    </body>
+</html>

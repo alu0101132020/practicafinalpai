@@ -1,0 +1,20 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "The src directory is home to the actual codebase of the application and the target of our build tools. In this directory you should leave all the source code you have developed for your assignment.",
+  "main": "quick-hull.js",
+  "dependencies": {
+    "jsdoc": "^3.6.3",
+    "y": "^0.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

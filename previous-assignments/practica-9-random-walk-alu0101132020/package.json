@@ -1,0 +1,32 @@
+{
+  "name": "practica-9-random-walk-alu0101132020",
+  "version": "1.0.0",
+  "description": "Random walk implementation for JS",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "nyc mocha tests/random-walk-tests.js",
+    "coverage": "nyc --reporter html npm test",
+    "report-coverage": "nyc report --reporter lcovonly > coverage.lcov && codecov",
+    "start": "node web-server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-INF-PAI-2019-2020/practica-9-random-walk-alu0101132020.git"
+  },
+  "author": "Manuel Andrés Carrera Galafate <alu0101132020@ull.edu.es> (htpps://github.com/alu0101132020)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-INF-PAI-2019-2020/practica-9-random-walk-alu0101132020/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-INF-PAI-2019-2020/practica-9-random-walk-alu0101132020#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "jsdoc": "^3.6.4",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.1"
+  }
+}

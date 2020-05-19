@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+}
+body {
+  background: grey;
+  color: white;
+}
+canvas {
+  background: grey;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: block;
+}

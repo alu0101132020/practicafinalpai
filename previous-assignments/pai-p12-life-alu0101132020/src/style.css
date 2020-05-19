@@ -1,0 +1,206 @@
+body {
+text-align: center;
+background: #383838 url(http://www.midwinter-dg.com/images/theme/body.gif) repeat;
+font-family: 'Press Start 2P', cursive;
+color: white;
+width:90%;
+margin: 80px auto 40px;
+}
+
+header {
+  margin-top: -2px;
+  height: var(--site-header-height);
+  display: flex;
+  position: relative;
+  max-width: 1800px;
+  margin: 0 auto;
+  --dropdown-top: 40px;
+}
+
+ul li {
+  list-style-type: none;
+  position: relative;
+  height: var(--nav-section);
+  float: left;
+  font-size: 0.8em;
+}
+
+p {
+width: 300px;
+margin: 40px auto;
+text-align: center;
+color: #999;
+}
+
+a:link, a:visited {
+color: #ccc;
+text-decoration: none;
+
+}
+
+a:hover, a:active {
+color: #0080ff;
+}
+
+#right-nav {
+  float: right;
+  margin-left: 50%;
+  text-shadow: 0 1px 0 #fff;
+}
+
+/* text-shadow styles */
+
+
+div {
+/* width: 998px;	margin-right: auto; */
+border: 1px solid #424242;
+height: 100%;
+margin-bottom: 0.5%;
+margin-top: 0.5%
+}
+
+Z1 {
+color: #d7ceb2;	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
+font: 80px 'BazarMedium';
+letter-spacing: 10px;
+}
+
+
+.smaller {
+font-size: .65em;
+vertical-align: .2em;
+}
+
+.boton-caja-izq {
+  -webkit-border-radius: 0px;
+  font-family: 'Press Start 2P', cursive;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color: white;
+  padding: 15px;
+  background-color: #000000;
+  box-shadow: 1px 1px 20px 0px #000000;
+  -webkit-box-shadow: 1px 1px 20px 0px #000000;
+  -moz-box-shadow: 1px 1px 20px 0px #000000;
+  text-shadow: 1px 1px 20px #000000;
+  border: solid white 5px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+.boton-caja-izq:hover {
+  color: black;
+  background-color: white;
+  border: solid black 5px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  text-decoration: none;
+}
+
+#pie-de-pagina {
+  display: flex;
+  font-size: 0.75rem;
+  background-color: #343d46;
+  color: white;
+  border-radius: 1em;
+  justify-content: space-between;
+}
+
+#pie-de-pagina p {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+
+#caja-izquierda {
+  border: none;
+  color: black;
+  width: 17%;
+  height: 80%;
+  padding: 3%;
+  margin-left: 2%;
+  margin-right: 5%;
+  align-items: center;
+}
+
+#caja-derecha {
+  border: none;
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding: 3%;
+  margin-right: 2%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#caja-derecha div {
+  border: none;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 3%;
+  margin-right: 2%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#gameGrid {
+  width: 700px;
+  height: 700px;
+  margin-right: 0px;
+}
+
+#parte-principal {
+  background: #2c2e38 url(http://www.midwinter-dg.com/blog_demos/css-text-shadows/images/retro.jpg) center center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#cells-box {
+  color:white;
+  font-size: 0.8rem;
+}
+
+#poker-game {
+  height: 100vh;
+  width: 100vw;
+}
+
+#poker-game {
+  border: none;
+  height: 100vh;
+  width: 100vw;
+}
+
+#first-half {
+  border: none;
+  height: 50vh;
+  width: 80vw;
+}
+
+
+#second-half {
+  border: none;
+  height: 50vh;
+  width: 80vw;
+}
+
+#first-set {
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+#second-set {
+  border: none;
+  height: 100%;
+  width: 100%;
+}

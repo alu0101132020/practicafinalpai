@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carrera Galafate Manuel Andrés</title>
+    <meta name="viewport" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+    <script language="javascript" type="text/javascript" src="cell.js"></script>
+    <script language="javascript" type="text/javascript" src="grid-of-cells.js"></script>
+    <script language="javascript" type="text/javascript" src="life.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script> const expect = chai.expect; </script>
+    <script>
+      mocha.setup("bdd");
+    </script>
+    <script src="../tests/life-tests.js"></script>
+  </head>
+
+  <body>
+    <button><p><a href="../index.html">Back to index</a></p></button>
+      <div id="mocha"></div>
+      <script>
+        window.onload = function() {
+          mocha.run()
+        };
+      </script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Carrera Galafate Manuel Andrés</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script language="javascript" type="text/javascript" src="point.js" defer></script>
+    <script language="javascript" type="text/javascript" src="chess-piece.js" defer></script>
+    <script language="javascript" type="text/javascript" src="drawable-chess-piece.js" defer></script>
+    <script language="javascript" type="text/javascript" src="chess-board.js" defer></script>
+    <script language="javascript" type="text/javascript" src="drawable-chessboard.js" defer></script>
+    <script language="javascript" type="text/javascript" src="queens-chess-board.js" defer></script>
+    <script language="javascript" type="text/javascript" src="drawable-queen-chess-board.js" defer></script>
+    <script language="javascript" type="text/javascript" src="main.js" defer></script>
+  </head>
+  <body onload="printNormalBoard();">
+    <header>
+      <h1 class="site-title">lichess<span>.org</span></h1>
+      <ul id="left-nav">
+        <li><a href"">JUGAR</a></li>
+        <li><a href"">APRENDER</a></li>
+        <li><a href"">OBSERVAR</a></li>
+        <li><a href"">COMUNIDAD</a></li>
+        <li><a href"">HERRAMIENTAS</a></li>
+      </ul>
+      <ul id="right-nav">
+        <li><a href="#"><i class="fa fa-fw fa-search" id="search"></i></a></li>
+        <li><a href="#"><i class="fa fa-fw fa-gear" id="gear"></i></a></li>
+        <li id="iniciar-sesion"><a href"">INICIAR SESIÓN</a></li>
+      </ul>
+    </header>
+      <div id="parte-principal">
+        <div id="caja-izquierda">
+          <label><input type="checkbox" id="checkmark" value="generalizado">Generalizado</label>
+          <input class="boton-caja-izq" type="button" value="Generar soluciones" onclick="generateQueensProblem();" />
+          <input class="boton-caja-izq" type="button" value="Siguiente solución" onclick="showNextSolution();" />
+          <input class="boton-caja-izq" type="button" value="Limpiar tablero" onclick="printEmptyBoard();" />
+          <input class="boton-caja-izq" type="button" value="Partida de ajedrez" onclick="printNormalBoard();" />
+        </div>
+        <div id="tablero">
+          <canvas id="chess-board" width="900" height="900"></canvas>
+        </div>
+        <div id="caja-derecha">
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+    <div id="contador-soluciones">
+      <p id="total-soluciones"></p>
+      <p id="solucion-actual"></p>
+    </div>
+    <footer id="pie-de-pagina">
+      <p>Author: Manuel Andrés Carrera Galafate</p>
+      <p>Asignatura: Programación de Aplicaciones Interactivas 2020</p>
+      <p>Práctica 11 PAI - Ajedrez. Programación Gráfica y Orientada a Objetos en JS.</p>
+    </footer>
+  </body>
+</html>

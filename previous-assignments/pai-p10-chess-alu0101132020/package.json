@@ -1,0 +1,33 @@
+{
+  "name": "pai-p10-chess-alu0101132020",
+  "version": "1.0.0",
+  "description": "Proyecto de problema de las 8 reinas y problema general con interfaz gráfica",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nyc mocha tests/chess-tests.js",
+    "coverage": "nyc --reporter html npm run test",
+    "report-coverage": "nyc report --reporter lcovonly > coverage.lcov && codecov",
+    "start": "node web-server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-INF-PAI-2019-2020/pai-p10-chess-alu0101132020.git"
+  },
+  "author": "Manuel Andrés Carrera Galafate <alu0101132020@ull.edu.es> (htpps://github.com/alu0101132020)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-INF-PAI-2019-2020/pai-p10-chess-alu0101132020/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-INF-PAI-2019-2020/pai-p10-chess-alu0101132020#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "jsdoc": "^3.6.4",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.1"
+  }
+}
