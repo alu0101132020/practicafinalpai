@@ -37,7 +37,7 @@
           </div>
   
           <div class="navbar-menu" id="navbar-menu">
-            <div class="navbar-start   style="flex-grow: 1; justify-content: center;"">
+            <div class="navbar-start"   style="flex-grow: 1; justify-content: center;">
               <span class="title">Interactive Molecular Dynamics - Carrera Galafate Manuel Andrés</span>
             </div>
       
@@ -46,180 +46,209 @@
       </nav>
     </section>
     <div class="hero-body">
-      <div class="container has-text-centered">
-        <div class="columns">
-          <div class="column">
-            <canvas id="bounce" width="500" height="500" style="border: black solid 2px"></canvas>
-          </div>
-          <div class="column">
-            <div class="columns">
-              <div class="column">
-                <button class="button">Start</button>
+      <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="container has-text-centered">
+              <div class="columns">
+                <div class="column">
+                  <div class="columns">
+                    <div class="column">
+                      <canvas id="bounce" width="500" height="500" style="border: black solid 2px"></canvas>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>t = 0.000, E = 0.000, T = 0.0000, P = 0.0000</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-5">
+                  <div class="columns">
+                      <button class="button is-fullwidth">Start</button>
+                      <button class="button is-fullwidth">Stop</button>
+                      <button class="button is-fullwidth">Restart</button>
+                  </div>
+                  <div class="columns">
+                      <button class="button is-fullwidth">Slower</button>
+                      <button class="button">+1%</button>
+                      <button class="button">-1%</button>
+                      <button class="button is-fullwidth">Faster</button>
+                  </div>
+                  <div class="columns">
+                      <button class="button is-fullwidth">Freeze</button>
+                      <button class="button is-fullwidth">Reverse</button>
+                    <div class="column">
+                      <select>
+                        <option>Bonds</option>
+                        <option>Create</option>
+                        <option>Release</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <select>
+                        <option>Presets</option>
+                        <option>Two atoms</option>
+                        <option>Bouncing ball</option>
+                        <option>Chaotic balls</option>
+                        <option>Brownian bar</option>
+                        <option>Hot and cold</option>
+                        <option>Target</option>
+                        <option>Meteor</option>
+                        <option>Explosion</option>
+                        <option>Diatomic gas</option>
+                        <option>All on left</option>
+                        <option>Friction</option>
+                        <option>Plucked string</option>
+                        <option>Water balloon</option>
+                        <option>Nano pinball</option>
+                        <option>Slingshot</option>
+                        <option>Ratchet and pawl</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Mouse/Touch:</p>
+                    </div>
+                    <div class="column">
+                      <select>
+                        <option>Drag</option>
+                        <option>Select</option>
+                        <option>Anchor</option>
+                        <option>Connect</option>
+                        <option>Fix T</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Number of Atoms = 500</p>
+                    </div>
+                    <div class="column">
+                      <button class="button">-</button>
+                    </div>
+                    <div class="column">
+                      <button class="button">+</button>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Box size = 50 (volume = 2500)</p>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Gravity = 0.000</p>
+                    </div>
+                    
+                    <div class="column">  
+                      <label class="checkbox">
+                        <input type="checkbox">
+                        x10
+                      </label>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Time step = 0.020</p>
+                    </div>     
+                    <div class="column">  
+                      <label class="checkbox">
+                        <input type="checkbox">
+                        Fixed
+                      </label>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Steps per frame = 25</p>
+                    </div>     
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Atom color:</p>
+                    </div>
+                    <div class="column">
+                      <select>
+                        <option>By speed</option>
+                        <option>Purple</option>
+                        <option>Green</option>
+                        <option>Yellow</option>
+                        <option>Orange</option>
+                        <option>Red</option>
+                        <option>Magenta</option>
+                        <option>Cyan</option>
+                        <option>Blue</option>
+                        <option>Forest</option>
+                        <option>Black</option>
+                        <option>White</option>
+                        <option>Random</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <p>Background:</p>
+                    </div>
+                    <div class="column">
+                      <select>
+                        <option>Black</option>
+                        <option>White</option>
+                        <option>Beige</option>
+                        <option>Pink</option>
+                        <option>Lavender</option>
+                        <option>Sky</option>
+                        <option>Sage</option>
+                        <option>Navy</option>
+                        <option>Plum</option>
+                        <option>Brown</option>
+                        <option>Gray</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <button class="button">Reset stats</button>
+                    </div>
+                    <div class="column">
+                      <button class="button">↓ Data ↓</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="column">
-                <button class="button">Stop</button>
-              </div>
-              <div class="column">
-                <button class="button">Restart</button>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <button class="button">Slower</button>
-              </div>
-              <div class="column">
-                <button class="button">+1%</button>
-              </div>
-              <div class="column">
-                <button class="button">-1%</button>
-              </div>
-              <div class="column">
-                <button class="button">Faster</button>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <button class="button">Freeze</button>
-              </div>
-              <div class="column">
-                <button class="button">Reverse</button>
-              </div>
-              <div class="column">
-                <select>
-                  <option>Bonds</option>
-                  <option>Create</option>
-                  <option>Release</option>
-                </select>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <select>
-                  <option>Presets</option>
-                  <option>Two atoms</option>
-                  <option>Bouncing ball</option>
-                  <option>Chaotic balls</option>
-                  <option>Brownian bar</option>
-                  <option>Hot and cold</option>
-                  <option>Target</option>
-                  <option>Meteor</option>
-                  <option>Explosion</option>
-                  <option>Diatomic gas</option>
-                  <option>All on left</option>
-                  <option>Friction</option>
-                  <option>Plucked string</option>
-                  <option>Water balloon</option>
-                  <option>Nano pinball</option>
-                  <option>Slingshot</option>
-                  <option>Ratchet and pawl</option>
-                </select>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <p>Mouse/Touch:</p>
-              </div>
-              <div class="column">
-                <select>
-                  <option>Drag</option>
-                  <option>Select</option>
-                  <option>Anchor</option>
-                  <option>Connect</option>
-                  <option>Fix T</option>
-                </select>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <p>Number of Atoms = 500</p>
-              </div>
-              <div class="column">
-                <button class="button">-</button>
-              </div>
-              <div class="column">
-                <button class="button">+</button>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <p>Box size = 50 (volume = 2500)</p>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <p>Gravity = 0.000</p>
-              </div>
-              
-              <div class="column">  
-                <label class="checkbox">
-                  <input type="checkbox">
-                  x10
-                </label>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <p>Time step = 0.020</p>
-              </div>     
-              <div class="column">  
-                <label class="checkbox">
-                  <input type="checkbox">
-                  Fixed
-                </label>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <p>Steps per frame = 25</p>
-              </div>     
-            </div>
-            <div class="columns">
-              <div class="column">
-                <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <p>Atom color:</p>
-              </div>
-              <div class="column">
-                <select>
-                  <option>By speed</option>
-                  <option>Purple</option>
-                  <option>Green</option>
-                  <option>Yellow</option>
-                  <option>Orange</option>
-                  <option>Red</option>
-                  <option>Magenta</option>
-                  <option>Orange</option>
-                  <option>Red</option>
-                  <option>Magenta</option>
-                </select>
+              <div class="container has-text-centered">
+              “If, in some cataclysm, all of scientific knowledge were to be destroyed, and only one sentence passed on to the next generation of creatures, what statement would contain the most information in the fewest words? I believe it is the atomic hypothesis (or the atomic fact, or whatever you wish to call it) that all things are made of atoms—little particles that move around in perpetual motion, attracting each other when they are a little distance apart, but repelling upon being squeezed into one another. In that one sentence, you will see, there is an enormous amount of information about the world, if just a little imagination and thinking are applied.” 
               </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   <section class="footer ">
     <div class="content is-mobile has-text-centered is-primary">
