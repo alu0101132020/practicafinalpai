@@ -32,34 +32,29 @@ if (typeof(window) === 'undefined') {
 /**
  * @description Función que inicia la bola y empieza la animación.
  */
-const start = () => {
-  let start = document.getElementById('start-stop');
-  start.textContent = 'Stop';
-  screen = new BouncingScreenClass(document.getElementById('bounce'));
-  screen.animation();
-  drawTime();
+const startStopRunning = () => {
+  if (state === null) {
+    let start = document.getElementById('start-stop');
+    start.textContent = 'Stop';
+    screen = new BouncingScreenClass(document.getElementById('bounce'));
+    screen.animation();
+    drawTime();
+    state = 'running';
+  } else if (state === 'running') {
+    let start = document.getElementById('start-stop');
+    start.textContent = 'Resume';
+    screen.stop = true;
+    state = 'stoped';
+  } else {
+    let start = document.getElementById('start-stop');
+    start.textContent = 'Stop';
+    screen.stop = false;
+    screen.animation();
+    drawTime();
+    state = 'running';
+  }
 }
 
-/**
- * @description Función que detiene la animación mediante la manipulación de un
- * booleano.
- */
-const stop = () => {
-  let start = document.getElementById('start-stop');
-  start.textContent = 'Resume';
-  screen.stop = true;
-}
-
-/**
- * @description Función que continua la animación por el punto donde iba.
- */
-const resume = () => {
-  let start = document.getElementById('start-stop');
-  start.textContent = 'Stop';
-  screen.stop = false;
-  screen.animation();
-  drawTime();
-}
 
 /**
  * @description Función que modifica el color html del fondo.
@@ -103,7 +98,6 @@ async function drawTime () {
     await sleep(50);
     const time = document.getElementById('time-string');
     time.textContent = screen.time;
-    console.log(time.textContent);
   }
 }
 
