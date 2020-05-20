@@ -17,14 +17,14 @@
   <title>Carrera Galafate Manuel Andrés</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
   <script language="javascript" type="text/javascript" src="point.js" defer></script>
   <script language="javascript" type="text/javascript" src="ball.js" defer></script>
   <script language="javascript" type="text/javascript" src="bouncing-screen.js" defer></script>
   <script language="javascript" type="text/javascript" src="main.js" defer></script>
+  <script language="javascript" type="text/javascript" src="ejercicio.js" defer></script>
 </head>
 
-<body onload="start();">
+<body>
   <section class="hero">
       <nav class="navbar  has-shadow" role="navigation" aria-label="main navigation">
         <div class="container">
@@ -58,15 +58,15 @@
                   </div>
                   <div class="columns">
                     <div class="column">
-                      <p>t = 0.000, E = 0.000, T = 0.0000, P = 0.0000</p>
+                      <p>t = <span id="time-string">0.000</span>, E = 0.000, T = 0.0000, P = 0.0000</p>
                     </div>
                   </div>
                 </div>
                 <div class="column is-5">
                   <div class="columns">
-                      <button class="button is-fullwidth">Start</button>
-                      <button class="button is-fullwidth">Stop</button>
-                      <button class="button is-fullwidth">Restart</button>
+                      <button id="start-stop" class="button is-fullwidth" onclick="start();">Start</button>
+                      <button class="button is-fullwidth" onclick="stop();">Stop</button>
+                      <button class="button is-fullwidth" onclick="resume();">Restart</button>
                   </div>
                   <div class="columns">
                       <button class="button is-fullwidth">Slower</button>
@@ -111,8 +111,6 @@
                   <div class="columns">
                     <div class="column">
                       <p>Mouse/Touch:</p>
-                    </div>
-                    <div class="column">
                       <select>
                         <option>Drag</option>
                         <option>Select</option>
@@ -128,8 +126,6 @@
                     </div>
                     <div class="column">
                       <button class="button">-</button>
-                    </div>
-                    <div class="column">
                       <button class="button">+</button>
                     </div>
                   </div>
@@ -139,9 +135,7 @@
                     </div>
                   </div>
                   <div class="columns">
-                    <div class="column">
                       <p>Box size = 50 (volume = 2500)</p>
-                    </div>
                   </div>
                   <div class="columns">
                     <div class="column">
@@ -167,7 +161,7 @@
                   </div>
                   <div class="columns">
                     <div class="column">
-                      <p>Time step = 0.020</p>
+                      <p>Time step = <span id="time-step-value"></span></p>
                     </div>     
                     <div class="column">  
                       <label class="checkbox">
@@ -178,7 +172,7 @@
                   </div>
                   <div class="columns">
                     <div class="column">
-                      <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
+                      <input id="time-slider" class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range" onChange="updateSlider();" onKeyUp="updateSlider();">
                     </div>
                   </div>
                   <div class="columns">
@@ -196,7 +190,7 @@
                       <p>Atom color:</p>
                     </div>
                     <div class="column">
-                      <select>
+                      <select id="colorball" onchange="colorBall();">
                         <option>By speed</option>
                         <option>Purple</option>
                         <option>Green</option>
@@ -218,7 +212,7 @@
                       <p>Background:</p>
                     </div>
                     <div class="column">
-                      <select>
+                      <select id="background" onchange="backgroundHTML();">
                         <option>Black</option>
                         <option>White</option>
                         <option>Beige</option>
@@ -236,8 +230,6 @@
                   <div class="columns">
                     <div class="column">
                       <button class="button">Reset stats</button>
-                    </div>
-                    <div class="column">
                       <button class="button">↓ Data ↓</button>
                     </div>
                   </div>

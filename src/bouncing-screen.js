@@ -31,7 +31,7 @@ if (typeof(window) === 'undefined') {
 const BALL_RADIUS = 20;
 const BORDER_COLOR = 'black';
 const BACKGROUND_COLOR = 'white';
-const NUMBER_OF_BALLS = 100;
+const NUMBER_OF_BALLS = 1;
 /**
  * @description Clase pantalla. Una pantalla estará definida por las dimensiones
  * de un canvas y contendrá una pelota que se moverá a lo largo de la pantalla
@@ -45,7 +45,7 @@ class BouncingScreen {
    * @param {canvas} canvas Canvas sobre el que se dibujará la pelota y que hará
    * de pantalla sobre la que se rebota
    */
-  constructor(canvas) {
+  constructor(canvas, color) {
     this.maxX = canvas.width;
     this.maxY = canvas.height;
     this.balls = [];
@@ -65,6 +65,9 @@ class BouncingScreen {
     this.canvas = canvas;
     this.backgroundColor = BACKGROUND_COLOR;
     this.borderColor = BORDER_COLOR;
+    this.delay = 10;
+    this.time = 0;
+    this.stop = false;
   }
 
   /* istanbul ignore next */
@@ -77,6 +80,8 @@ class BouncingScreen {
      ball.drawBall(this.canvas);
     }
   }
+
+
 
   /* istanbul ignore next */
   /**
@@ -97,6 +102,7 @@ class BouncingScreen {
    * @description Función que se encarga de controlar el movimiento de la pelota.
    */
   nextFrame() {
+    this.time += this.delay;
     this.checkBordersReached();
     for (const ball of this.balls) {
       ball.updatePosition();
@@ -109,8 +115,8 @@ class BouncingScreen {
    * verdadero sigue generando la siguiente configuración de la partida.
    */
   async animation() {
-    while(true) {
-      await this.sleep(10);
+    while(!this.stop) {
+      await this.sleep(this.delay);
       this.drawScreen();
       this.nextFrame();
     }
@@ -147,17 +153,17 @@ class BouncingScreen {
   checkBordersReached() {
     for (const ball of this.balls) {
       if (ball.position.x + ball.radius > this.maxX) {
-        ball.color = this.getRandomColor();
+        // ball.color = this.getRandomColor();
         ball.direction.x *= -1;
       } else if (ball.position.x - ball.radius < 0) {
-        ball.color = this.getRandomColor();
+        // ball.color = this.getRandomColor();
         ball.direction.x *= -1;
       }
       if (ball.position.y + ball.radius > this.maxY) {
-        ball.color = this.getRandomColor();
+        // ball.color = this.getRandomColor();
         ball.direction.y *= -1;
       } else if (ball.position.y - ball.radius < 0) {
-        ball.color = this.getRandomColor();
+        // ball.color = this.getRandomColor();
         ball.direction.y *= -1;
       }
       }
